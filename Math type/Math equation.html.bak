@@ -4,8 +4,16 @@
     <meta charset="utf-8">
     <title>Math type</title>
     <link rel="stylesheet" href="styles.css">
+<<<<<<< HEAD
     <script type="text/x-mathjax-config">   MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
-    <.src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+    </script>
+=======
+    <script type="text/x-mathjax-config">   
+      MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+    </script>  
+>>>>>>> 6e76c43288c0fe55aa7f7ce5148cbb3b0945e951
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript">
+    </script>
   </head>
   
   
