@@ -4,8 +4,8 @@
     <meta charset="utf-8">
     <title>Math type</title>
     <link rel="stylesheet" href="styles.css">
-    <script type="text/x-mathjax-config">   MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}}); 
-    </script> <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"> </script>
+    <script type="text/x-mathjax-config">   MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+    <.src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
   </head>
   
   
@@ -38,6 +38,13 @@
 
 \noindent 若是我們把積木延伸的距離和積木疊的數量作圖，可以發現一開始上升的很快，僅需要三個積木就可以延伸一塊積木的距離，而延伸兩塊積木的距離大約需要10塊積木、那如果要延伸三塊積木的距離則需要30塊積木，若是要延伸到4塊積木的距離則需要花到80塊積木。可見向外延伸的速率越來越慢，但是不會收斂。
     
+    </p>
+    <p>
+    微積分基本定理:
+若實函數 $f(x)$ 在 $[a,b]$ 連續, 則 $\displaystyle F(x)=\int_a^x f(t)dt$ 在 $[a,b]$ 連續、在 $(a,b)$ 可微且
+\begin{equation*}
+F'(x)=\frac{d}{dx}\int_a^x f(t)dt=f(x), \forall x\in(a,b)
+\end{equation*}
     </p>
     
   </body>
