@@ -7,15 +7,15 @@
   </head>
   
   <body bgcolor="#D9DCC0">
-    <table width="1280" height="80">
-　       <tr><td align="center"><b><h1>哈囉這是奇異鳥的個人網頁</h1></b></td></tr>
-    </table>
+    <center><h1>哈囉這是奇異鳥的個人網頁</h1></center>
     <P Align=center><img src="./Main Page/kiwi_trans.png" alt="KiwiBird" width="242" height="165"></p>
     <br>
     
     <center><h1><a href="./Pizza theorem/PizzaTheorem.html"><LI>Pizza Theorem</LI></a></h1></center>
     <br>
     <center><h1><a href="./Block stacking/Block stacking problem.html"><LI>Block Stacking Problem</LI></a></h1></center>
+    <br>
+    <center><h1><a href="./Math type/Math equation.html"><LI>Block Stacking Problem</LI></a></h1></center>
     <br>
     <p><h2>Latest update : 2021/12/9</h2></p>
     <br>
