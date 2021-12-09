@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Math type</title>
+    <link rel="stylesheet" href="styles.css">
+
+    <script type="text/x-mathjax-config">   
+      MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+    </script>
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript">
+    </script>
+  </head>
+  
+  
+<body bgcolor="#D9DCC0">
+    <center><h1>Pizza theorem</h1></center><p>After a boring working day, you can&rsquo;t wait to enjoy a wonderful weekend. Therefore, you invite your best friend and going to hold a party in your backyard. The table is full of delicious food and drink; everyone is exciting to enjoy the good time. While you are going to cut the pizza and distribute to the guest, some quarrel begins in the crowd, arguing the size of the pizza slice isn&rsquo;t equally. Since you can&rsquo;t precisely cut through the center of the circle, <em>perhaps </em>you can&rsquo;t divide the pizza equally&hellip;</p>
+    <figure>
+      <img src="images/pizza.jpg"
+           alt=""
+           width="329"
+           height="293">
+      <figcaption>Photo by <a href="https://unsplash.com/@benu?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Benu Marinescu</a> on <a href="https://unsplash.com/s/photos/cutting-pizza?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></figcaption>
+    </figure>
+    <p>Are there any way to divide the pizza equally? Although the problem seems to be easily and lifelike, it is a famous math problem which confused and lure interest to mathematician in the late 19 centuries, and finally got solved in 2012. The interesting pizza divide problem came in to a famous theorem in geometry which is known as the Pizza theorem.</p>
+    <p>Here is a brief claim from the pizza theorem:</p>
+    <p>Assign an arbitrary point in the circle for the cutting center, and cut through the point for n times with equally angular interval &nbsp;&nbsp;. Finally, we can get 2n slice of pizza, and The sum of the areas of the odd-numbered sectors equals the sum of the areas of the even-numbered sectors. ( n is an even larger than 2 , n=4,6,8,10,12&hellip;</p>
+    <figure>
+      <img src="images/2.png"
+           alt=""
+           width="486"
+           height="235">
+      <figcaption>green area = orange area (n=4,6) Wiki.</figcaption>
+    </figure>
+    <p>The <em>pizza theorem</em> was originally proposed as a challenge problem by Upton(1967). Soon afterward, Michael Goldberg using direct manipulation of the algebraic expressions for the areas of the sectors. Furthermore, Carter &amp; Wagon (1994) provide an alternative proof by dissection showing how to partition the sectors into smaller pieces so that each piece in an odd-numbered sector has a congruent piece in an even-numbered sector.
+    </p>
+    <figure>
+      <img src="images/3.png"
+           alt=""
+           width="250"
+           height="250">
+      <figcaption><a href="https://en.wikipedia.org/wiki/Proof_without_words">Proof without words</a>&nbsp;for 8 sectors by&nbsp;<a href="https://en.wikipedia.org/wiki/Pizza_theorem#CITEREFCarterWagon1994a">Carter &amp; Wagon (1994a)</a>. ,Wiki</a></figcaption>
+    </figure>
+    <p><strong>Proof.</strong></p>
+    <p>In order to confirm the theorem, we are going to calculate the area of each slice of pizza, and sum the total area.</p>
+    <p>Without loss of generality, we can define a unit circle with origin, point O and the arbitrary cutting center, point P.</p>
+    <p>If we extend the line of OP and intersect with the circle at point Q. The first slice will go through point a0 and P, where the shift angle between the extend line and the first cut is .</p>
+    <p>The length of the cross-section of slice 1, &nbsp;,will become a function of theta, depends on the angle between .</p>
+    <p>Therefore, if we keep cutting the pizza through point P with angle shift &nbsp;counterclockwise, we can get slice S<sub>1</sub>,S<sub>2</sub>,S<sub>3</sub>,&hellip;S<sub>2n</sub> respectively.</p>
+    <p>Each slice of pizza&rsquo;s area can be calculate by calculus easily by following expression. However, now we are going to sum up the odd-numbered sectors, S<sub>1</sub>,S<sub>3</sub>,S<sub>5</sub>,&hellip;S<sub>2n-1</sub> only, to proof the Pizza theorem.</p>
+    In order to confirm the theorem, we are going to calculate the area of each slice of pizza, and sum the total area.
+
+    Without loss of generality, we can define a unit circle with origin, point O and the arbitrary cutting center, point P. 
+    
+    If we extend the line of OP and intersect with the circle at point Q. The first slice will go through point a0 and P, where the shift angle between the extend line and the first cut is $?{\mathrm{a}}_0PQ={\phi }_o$. 
+    
+    The length of the cross-section of slice 1, $r_0$ ,will become a function of theta, depends on the angle between $a_i,P,Q$.
+    
+    Therefore, if we keep cutting the pizza through point P with angle shift $\mathrm{\Delta }\mathrm{\phi }\mathrm{=}\frac{\mathrm{\pi }}{\mathrm{n}}$ counterclockwise, we can get slice S${}_{1}$,S${}_{2}$,S${}_{3}$,...,S${}_{2}$${}_{n}$ respectively.
+      
+\[{\mathrm{S}}_{\mathrm{1}}=\frac{1}{2}\int^{{\phi }_0+\mathrm{\Delta }\phi }_{{\phi }_0}{r^2\left(\theta \right)d\theta }\] 
+\[{\mathrm{S}}_{\mathrm{3}}=\frac{1}{2}\int^{{\phi }_0+3\mathrm{\Delta }\phi }_{{\phi }_0+2\mathrm{\Delta }\phi }{r^2\left(\theta \right)d\theta }\] 
+\[\mathrm{\vdots }\] 
+\[{\mathrm{S}}_{\mathrm{2N-1}}=\frac{1}{2}\int^{{\phi }_0+\left(2N-1\right)\mathrm{\Delta }\phi }_{{\phi }_0+\left(2N-2\right)\mathrm{\Delta }\phi }{r^2\left(\theta \right)d\theta }\] 
+Using the summation notation make the expression more concise. 
+\[\sum^{2N-1}_{i=1,3,5}{S_i}=\frac{1}{2}\left(\int^{{\phi }_0+\mathrm{\Delta }\phi }_{{\phi }_0}{r^2\left(\theta \right)d\theta }+\int^{{\phi }_0+3\mathrm{\Delta }\phi }_{{\phi }_0+2\mathrm{\Delta }\phi }{r^2\left(\theta \right)d\theta }+\dots +\int^{{\phi }_0+\left(2N-1\right)\mathrm{\Delta }\phi }_{{\phi }_0+\left(2N-2\right)\mathrm{\Delta }\phi }{r^2\left(\theta \right)d\theta }\right)\] 
+Meanwhile, we can alter the dummy variable in the integral by changing the range of the integral.
+\[\sum^{2N-1}_{i=1,3,5}{S_i}\mathrm{=}\frac{1}{2}\left(\int^{\mathrm{\Delta }\phi }_0{r^2\left(\theta +{\phi }_0\right)d\theta }+\int^{\mathrm{\Delta }\phi }_0{r^2\left(\theta {+\phi }_0+2\mathrm{\Delta }\phi \right)d\theta }+\dots +\int^{\mathrm{\Delta }\phi }_0{r^2\left(\theta +{\phi }_0+\left(2N-2\right)\mathrm{\Delta }\phi \right)d\theta }\right)\] 
+Since the upper and down limit of the integral is same, we can merge the integral together.
+\[\sum^{2N-1}_{i=1,3,5}{S_i}\mathrm{=}\frac{1}{2}\int^{\mathrm{\Delta }\phi }_0{\left(r^2\left(\theta +{\phi }_0\right)+r^2\left(\theta {+\phi }_0+2\mathrm{\Delta }\phi \right)+\dots +r^2\left(\theta +{\phi }_0+\left(2N-2\right)\mathrm{\Delta }\phi \right)\right)d\theta }\] 
+Or we can just write in following expression as well
+\[\sum^{2N-1}_{i=1,3,5}{S_i}\mathrm{=}\frac{1}{2}\int^{\mathrm{\Delta }\phi }_0{\sum^{N-1}_{i=0}{\left(r^2\left(\theta +{\phi }_0+2i\mathrm{\Delta }\phi \right)\right)}d\theta }\] 
+While doing the integral, $\mathrm{\theta }$ range from 0 to $\mathrm{\Delta }\mathrm{\phi }$ , for each $\mathrm{\theta }\mathrm{=}\theta +nd\theta $ which plugging in the summation variable of  $\theta +{\phi }_0$ will become a constant. Here we will replace the constant as $\mathrm{\beta }$
+\[\sum^{N-1}_{i=0}{\left(r^2\left(\beta +2i\mathrm{\Delta }\phi \right)\right)}\] 
+Therefore, in order to evaluate the value of the summation. We have to sum the square of the length of odd-numbered sectors' cross-section, $r^2_0,r^2_2,r^2_4,\dots ,\ r^2_{2N-2}$.
+\[\sum^{2N-1}_{i=1,3,5}{S_i}\mathrm{=}\frac{1}{2}\int^{\mathrm{\Delta }\phi }_0{\sum^{N-1}_{i=0}{r^2_{2i}}d\theta }\] 
+Evaluate the value of $\sum^{N-1}_{i=0}{r^2_{2i}}$
+
+<figure>
+  <img src="images/4.png"
+       alt=""
+       width="250"
+       height="250">
+</figure>
+
+Using the Law of cosine with the $\mathrm{\Delta }{OPa}_i$
+\[1^2=l^2+r^2_i-2{lr}_i{cos \left(\pi -\left(\beta +i\mathit{\Delta}\phi \right)\right)\ }\] 
+\[r^2_i+2{lr}_i{cos \left(\beta +i\mathit{\Delta}\phi \right)\ }+l^2-1=0\] 
+There are two roots for the equation, $r_{i,1}\ and\ r_{i,2}\ (r_{i,1}>0\ ,\ r_{i,2}<0)$
+
+ However only }${\mathrm{r}}_{\mathrm{i,1}}$make sense.  
+
+To evaluate the value of $r^2_i\mathrm{\ }(the\ r^2_{i,1}\ one\mathrm{)}$we utilize the relation between root and coefficient
+\[r_{i,1}+r_{i,2}=-2l{cos \left(\beta +i\mathit{\Delta}\phi \right)\ }\] 
+\[r_{i,1}\times r_{i,2}=l^2-1\] 
+\[r^2_{i,1}+r^2_{i,2}\mathrm{=}{\left(r_{i,1}+r_{i,2}\right)}^{\mathrm{2}}-2r_{i,1}r_{i,2}=4l^2{cos^2 \left(\beta +i\mathit{\Delta}\phi \right)\ }\mathrm{-}\mathrm{2}\left(l^2-1\right)\] 
+\[r^2_{i,1}+r^2_{i,2}={2l}^2\left(2{cos^2 \left(\beta +i\mathit{\Delta}\phi \right)\ }-1\right)\mathrm{+2}\] 
+\[\ r^2_{i,1}+r^2_{i,2}={2l}^2{cos \left(2\beta +2i\mathit{\Delta}\phi \right)\ }\mathrm{+2\ \ \ \ \ \ \ \ \ \ \ \ }\] 
+
+ Meanwhile there are an interesting relation between $r_{i,1}\ and\ r_{i+N,2}\ ;\ r_{i,2}\ and\ r_{i+N,1}$
+
+ The exact value of  $r_{i,1}\ and\ r_{i,2}$ can derive by the formula of Quadratic equation
+\[r_{i,1}\mathrm{=}\frac{-2l{cos \left(\beta +i\mathit{\Delta}\phi \right)\ }+\sqrt{{\left(2{lr}_i{cos \left(\beta +i\mathit{\Delta}\phi \right)\ }\right)}^2-4\left(l^2-1\right)}}{2}\] 
+\[r_{i,2}\mathrm{=}\frac{-2l{cos \left(\beta +i\mathit{\Delta}\phi \right)\ }-\sqrt{{\left(2{lr}_i{cos \left(\beta +i\mathit{\Delta}\phi \right)\ }\right)}^2-4\left(l^2-1\right)}}{2}\] 
+Using the Law of cosine with the $\mathrm{\Delta }{OPa}_{i+N}$
+\[r^2_{i+N}-2{lr}_{i+N}{cos \left(\beta +i\mathit{\Delta}\phi \right)\ }+l^2-1=0\] 
+\[r_{i+N,1}\mathrm{=}\frac{2l{cos \left(\beta +i\mathit{\Delta}\phi \right)\ }+\sqrt{{\left(2{lr}_i{cos \left(\beta +i\mathit{\Delta}\phi \right)\ }\right)}^2-4\left(l^2-1\right)}}{2}\] 
+\[r_{i+N,2}\mathrm{=}\frac{2l{cos \left(\beta +i\mathit{\Delta}\phi \right)\ }-\sqrt{{\left(2{lr}_i{cos \left(\beta +i\mathit{\Delta}\phi \right)\ }\right)}^2-4\left(l^2-1\right)}}{2}\] 
+
+We can find that
+\[r^2_{i,1}=r^2_{i+N,2}\] 
+\[r^2_{i,2}=r^2_{i+N,1}\] 
+
+
+Using the same equation previously, from i=0,2,4,...(2N-2) 
+\[r^2_{0,1}+r^2_{0,2}={2l}^2{cos \left(2\beta +0\mathit{\Delta}\phi \right)\ }\mathrm{+2\ \ }\] 
+\[\ r^2_{2,1}+r^2_{2,2}={2l}^2{cos \left(2\beta +4\mathit{\Delta}\phi \right)\ }\mathrm{+2\ \ }\] 
+\[\ r^2_{4,1}+r^2_{4,2}={2l}^2{cos \left(2\beta +8\mathit{\Delta}\phi \right)\ }\mathrm{+2\ \ }\] 
+\[\mathrm{\vdots }\] 
+\[\ r^2_{2N-2,1}+r^2_{2N-2,2}={2l}^2{cos \left(2\beta +2\left(2N-2\right)\mathit{\Delta}\phi \right)\ }\mathrm{+2\ \ }\] 
+
+Since $r^2_{i,1}=r^2_{i+N,2}$
+\[2\sum^{2N-2}_{i=0,2,4}{r^2_{i,1}}={2l}^2\sum^{2N-2}_{i=0,2,4}{{cos \left(2\beta +2i\mathit{\Delta}\phi \right)\ }}+2\sum^{2N-2}_{i=0,2,4}{1}\] 
+
+The second term of the right hand side equal 2N, but the first term needs to consider more deeply
+\[\sum^{2N-2}_{i=0,2,4}{{cos \left(2\beta +2i\mathit{\Delta}\phi \right)\ }}=Re\left\{\sum^{2N-2}_{i=0,2,4}{e^{i\left(2\beta +2i\mathit{\Delta}\phi \right)}}\right\}\] 
+\[\mathrm{*}\mathrm{do\ not\ confused\ the\ symbol\ i\ in\ the\ exponentail,\ which\ means\ imagine\ number\ and\ dummy\ variable\ respectively}\] 
+
+The summation in terms of exponential can be view as the sum of geometric sequence with 
+\[a_0=e^{i2\beta },\ r=e^{4i\mathit{\Delta}\phi },\ n=N\] 
+
+Finally, using the formula of the geometric sequence's sum
+\[\sum^{2N-2}_{i=0,2,4}{e^{i\left(2\beta +2i\mathit{\Delta}\phi \right)}}=\frac{a_0\left(1-r^n\right)}{1-r}=\frac{e^{i2\beta }\left(1-e^{4i\mathit{\Delta}\phi N}\right)}{1-e^{4i\mathit{\Delta}\phi }}\] 
+
+With 
+\[\mathit{\Delta}\phi =\frac{\pi }{N}\] 
+\[\sum^{2N-2}_{i=0,2,4}{e^{i\left(2\beta +2i\mathit{\Delta}\phi \right)}}=\frac{e^{i2\beta }\left(1-e^{4\pi i}\right)}{1-e^{4\pi i/N}}=0\] 
+
+Therefore we can conclude:
+\[\sum^{2N-2}_{i=0,2,4}{r^2_{i,1}}=N\] 
+
+ After some modification of the dummy variable
+\[\sum^{N-1}_{i=0,1,2}{r^2_{2i}}=N\] 
+Last plugging the relation back to the 
+\[\sum^{2N-1}_{i=1,3,5}{S_i}=\frac{1}{2}\int^{\mathrm{\Delta }\phi }_0{\sum^{N-1}_{i=0}{r^2_{2i}}}d\theta \] 
+\[\sum^{2N-1}_{i=1,3,5}{S_i}=\frac{1}{2}\int^{\mathrm{\pi }\mathrm{/N}}_0{N}d\theta \mathrm{=}\frac{\mathrm{\pi }}{\mathrm{2}}\] 
+We can conclude that the sum of odd-numbered sectors, S${}_{1}$,S${}_{3}$,S${}_{5}$,...S${}_{2n-1}$is the half of the unit circle. Therefore, the sum of odd-numbered sectors equal to the sum of even-numbered sectors.
+<br>
+END 
+    
+   
+    
+
+</body>
+    
+</html>
