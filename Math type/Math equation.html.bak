@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Math type</title>
+    <link rel="stylesheet" href="styles.css">
+    <script type="text/x-mathjax-config">   MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}}); 
+    </script> <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"> </script>
+  </head>
+  
+  
+  <body bgcolor="#D9DCC0">
+    <center><h1>數學方程式 math type</h1></center>
+    <p>A Cross Product Formula
+
+    \[\mathbf{V}_1 \times \mathbf{V}_2 =  \begin{vmatrix}
+    \mathbf{i} & \mathbf{j} & \mathbf{k} \\
+    \frac{\partial X}{\partial u} &  \frac{\partial Y}{\partial u} & 0 \\
+    \frac{\partial X}{\partial v} &  \frac{\partial Y}{\partial v} & 0
+    \end{vmatrix}  \]</p>
+    <p><h2>Latest update : 2021/12/9</h2></p>
+    <br>
+    <p>
+    \[C^'_M=\frac{1\times C_{M,n}+\left(N-1\right)\times C_{M,n-1}}{1+\left(N-1\right)}\] 
+    \[\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ =\frac{1\times C_{M,n}+\left(N-1\right)\times \left(x_{n-1}+c_{n-1}\right)}{1+\left(N-1\right)}\] 
+    \[=\ \frac{\frac{L}{2}+\left(N-1\right)L}{N}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \] 
+    \[=\ \frac{L}{2N}+\left(1-\frac{1}{N}\right)L\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \] 
+    \[=\ c_n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \] 
+    </p><br>
+    <p>
+    \[x_2=\frac{L}{4}\mathrm{\ ,\ }x_3=\frac{L}{6}\mathrm{\ ,\ }x_4=\frac{L}{8}\mathrm{\dots }\] 
+    </p>
+    <br>
+    <p>
+    \noindent 那最後呢，有趣的事情我們可以發現向外延伸的距離L即為這些延伸的加總，而且恰為調和級數
+\[\mathrm{L=}\sum^{\infty }_{k=1}{\frac{L}{2k}}\mathrm{=}\frac{\mathrm{L}}{\mathrm{2}}\sum^{\infty }_{k=1}{\frac{1}{k}}\to \infty \] 
+也就是說，我們會發現若是以調和級數這樣的方式堆疊積木，除了可以保持積木塔的平衡，積木向外延伸的距離 還可以到達無限遠的呢！ 很不可思議吧 XD
+
+\noindent 若是我們把積木延伸的距離和積木疊的數量作圖，可以發現一開始上升的很快，僅需要三個積木就可以延伸一塊積木的距離，而延伸兩塊積木的距離大約需要10塊積木、那如果要延伸三塊積木的距離則需要30塊積木，若是要延伸到4塊積木的距離則需要花到80塊積木。可見向外延伸的速率越來越慢，但是不會收斂。
+    
+    </p>
+    
+  </body>
+    
+</html>
