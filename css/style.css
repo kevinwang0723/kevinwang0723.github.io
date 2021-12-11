@@ -24,6 +24,13 @@ body{
 	border-color: blue;
 }
 
+
+h3 {
+	position: relative;
+  	left: 50px;
+	color: black;
+
+}
 .center {
 	display: block;
 	margin-left: auto;
