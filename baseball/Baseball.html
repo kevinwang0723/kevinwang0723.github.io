@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>The mystery of baseball pitching</title>
+    <link rel="stylesheet" href="../css/style.css">
+
+    <script type="text/x-mathjax-config">   
+        MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+    </script>
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript">
+    </script>
+  </head>
+  
+  
+<body>
+    <h2 class="title">The mystery of baseball pitching</h2>
+    <div class="section">
+      <h3>Intrdouction</h3>
+      <p>Pitcher and batter combat is the most exciting moment during the baseball game. As a result, pitcher can make good use of breaking ball to confuse batter and weaken batter threat. Each kind of breaking ball has its distinctive trajectory, which is mainly caused by the airflow during flight. After analyzing the motion of the baseball, we find that drag force, gravity and Magnus force affect the ball’s trajectory dramatically. Using classical mechanics, we can derive plenty of ODE to describe the motion of a flying baseball. Using MATLAB we can solve those differential equations numerically by using 4th Runge-Kutta method. Finally, applying different initial conditions (velocity, spin rate, rotation axis, etc.) we simulate various breaking balls successfully, such as slider, sinker and curve ball. Moreover, we also simulate the most dazzling breaking ball, knuckle ball, or known as butterfly ball. Knuckle ball trajectory is a chaos phenomenon, and our simulation shows bizarre trajectory which isn’t observe in normal breaking ball.</p>
+      <p>Following discussion is mainly based on the analyzes done by professor Richard Fitzpatrick.
+        <br>
+        Matlab code and numerical analyze is done personally, including batter decision discussion.
+        <br>
+        Breaking ball’s trajectory is displayed by Origin. Moreover, the fascinated animation was done by my friend using unity.
+      </p>
+    </div>
+    <div class="bob-container"> 
+      <div class="bob-row">
+        <div class="bob-2item">
+          <img src="./img/1.png">
+          <div style="height:43px;"></div>
+        </div>
+        <div class="bob-2item">
+          <img src="./img/2.png">
+          <div style="height:43px;"></div>
+        </div>
+    </div>
+    <div class="section">    
+        <h3>Equation</h3>
+        <p>In order to analysis the trajectory of the baseball, we consider the total force acting on the baseball between the journey form the pitcher to the catcher. We can decompose the total force into gravity, air drag, Magnus force, and lateral random force. The ratio of lateral random force is too small so that it only have an effect in low spin rate ball (low spin rate ball have extremely small Magnus force).</p>
+        <p>After above consideration, we find air drag, Magnus force and gravity play an important role in baseball motion. Following we going to introduce air drag, Magnus force, and lateral random force respectively.</p>  
+      <div class="sub_section">
+        <h3>Air Drag</h3>
+        <p>The direction of air drag is parallel to the direction of the ball and the amplitude depends on the velocity. Air drag can be described by the “drag equation”</p>
+        \[F_d=\frac{1}{2}\rho v^2C_dA\] 
+        <p>Where $C_D$ is the drag coefficient, and usually depends on the geometry of the object, and can be measured by experiment.</p>
+        <img src="./img/3.png" width="500px" class="center">
+        <p>In order to describe the air drag acting on the baseball, we can fit the experiment data in Fig. 2 and derive f(v) to describe the amplitude of  air drag (eq. 3). </p>
+        <img src="./img/4.png" width="500px" class="center">
+        <p>Variation of the drag coefficient, $C_D$, with speed, $v$, for normal, rough, and smooth baseballs. From The physics of baseball, R.K. Adair (Harper & Row, New York NY, 1990).</p>
+        $f\left(v\right)=0.0039+\frac{0.0058}{1+\mathrm{exp}(\frac{v-v_d}{\mathrm{\Delta }})}~~~~,~~v_d=\mathrm{35m/s}~~~\mathrm{\Delta }\mathrm{=5m/s}$
+        <p>Therefore the drag force in x,y,z component is </p>
+        \[f_x=-\frac{1}{2}\rho v^2C_dA\times sin\theta \propto -f\left(v\right)vv_x\] 
+      </div>
+      <div class="sub_section">
+        <h3>Magnus Force</h3>
+        The Magnus effect is an observable phenomenon that is commonly associated with a spinning object moving through the air or another fluid. The force can be</p>
+        \[\mathop{F_m}\limits^{\rightharpoonup}=s(\mathop{\omega }\limits^{\rightharpoonup}\times \mathop{v}\limits^{\rightharpoonup})\] 
+        <img src="./img/2.png" width="500px" class="center">
+      </div>
+      <div class="sub_section">
+        <h3>Random Lateral Force</h3>
+        <p>During low spin rate (Knuckle ball), Magnus force can be neglect and the system is dominated by lateral force. Lateral force act on the baseball is caused by the asymmetry of the baseball, since the direction of the stream is distinct in different angle. The lateral force act on the baseball was measured in the wind tunnel (Fig. 3).</p>
+        <div class="bob-container"> 
+          <div class="bob-row">
+            <div class="bob-2item">
+              <img src="./img/5.png">
+              
+            </div>
+            <div class="bob-2item">
+              <img src="./img/6.png">
+            </div>
+          </div>
+        </div>
+        Aerodynamics of a knuckleball, Robert G. Watts and Eric Sawyer, American Journal of Physics 43, 960 (1975)
+        <br>
+        Experiment data shows periodic relationship between the lateral force and the angle.
+        <img src="./img/7.png" width="500px" class="center">
+        Fitting the data, lateral force can be approximate as Eq. 2.
+        \[G\left(\delta \right)=0.5\left[{sin \left(4\phi \right)\ }-0.25{sin \left(8\phi \right)\ }+0.08{sin \left(12\phi \right)\ }-0.025{sin \left(16\phi \right)\ }\right]\] 
+      </div>
+      <div class="sub_section">
+        <p>Finally, we can combine each component together. And derive the equation of motion with initial condition.</p>
+        \[\frac{{dv}_x}{dt}=-f\left(v\right)vv_x+B\omega (v_zsin\phi -v_ycos\phi )\] 
+        \[\frac{{dv}_y}{dt}=-f\left(v\right)vv_y+B\omega v_xcos\phi +gG\left(\delta \right)\] 
+        \[\frac{{dv}_z}{dt}=-f\left(v\right)vv_z-B\omega v_xsin\phi -g\] 
+        \[G\left(\delta \right)=0.5\left[{sin \left(4\phi \right)\ }-0.25{sin \left(8\phi \right)\ }+0.08{sin \left(12\phi \right)\ }-0.025{sin \left(16\phi \right)\ }\right]\] 
+        Different type of breaking ball with different initial condition list in Table 1.
+        <img src="./img/8.png" width="500px" class="center">
+        <img src="./img/9.png" width="700px" class="center">
+        Those ODE equations can be solved by MATLAB ODE45 function numerically.
+
+      </div>
+      <div class="sub_section">
+        <h3>Resluts</h3>
+        <p>1.	3-Dimesional with strike zone and different types of breaking ball
+        <img src="./img/10.png" width="500px" class="center">
+        <p>2. Pitcher vs Batter</p>
+        <img src="./img/11.png" width="700px" class="center">
+        <p>Using the parameter in Table 1 and MATLAB to solve the ODE equation numerically, we can obtain (x, y, z, t) data. Plotting the data in 3D space, we can simulate the trajectory of different breaking ball. Besides, observing the trajectory at x-z plane, we can find vertical shift isn’t obvious initially between fastball and change up. Therefore, batter can be easily confused by the breaking ball. More results are shown beneath in the catcher view. Interestingly, the trajectory of the knuckle ball is abnormal, which seems like a flying butterfly.</p>
+        <p>3.	Results of each kinds breaking ball: </p>
+        <img src="./img/12.png" width="800px" class="center">
+      </div>
+      
+      <center><h1><a href="../index.html">Home</a></h1></center>
+</body>
+    
+</html>
