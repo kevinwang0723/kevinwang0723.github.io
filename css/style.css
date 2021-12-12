@@ -24,24 +24,37 @@ header{
 	margin-bottom:5px;
 }
 .article{
-	width:80%;
-	padding: 25px;
-	margin:5px 10px 10px 10px;
+	width:90%;
+	height:300px;
+	padding: 5px;
+	margin:5px 10px 20px 10px;
 	background-color:#f5d183;
+	border: 0.5rem outset rgb(49, 106, 180);
+	border-radius: 12px;
+}
+.article_title{
+	color:green;
+	height:5%;
+	}
+.date{
+	margin-left:8%;
+	color:blueviolet;
+	height:1%;
 }
 .article_introduction{
-	align="left";
-	margin-left: 10px;
-	height:150px;
+	font-style: oblique
+	font-size: 21px;
+	float:left;
+	width: 65%;
 	color:darkblue;
-	
+	margin-top:1%;
+	margin-left: 3%;
+	margin-right:5%;
 }
 .article_cover{
-	height:50px;
-	display: block;
-	margin-left: auto;
-	margin-right: auto;
-	margin-top: 15px;
+	margin-left:5%;
+	float:left;
+	width: 22%;
 }
 
 .container{
@@ -73,7 +86,7 @@ footer{
 	background-color: #FBF3D5;
 	border: 0.5rem outset pink;
  	outline: 0.5rem solid khaki;
-  	box-shadow: 0 0 0 2rem skyblue;
+  	box-shadow: 0 0 0 0.5rem skyblue;
   	border-radius: 12px;
  	font: bold 1rem sans-serif;
   	margin: 2rem;
