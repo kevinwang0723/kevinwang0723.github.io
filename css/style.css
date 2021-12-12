@@ -1,9 +1,7 @@
 body{
-	background-color: rgb(253,247,226);
-	font-family: "Century Gothic";
+	background-color: rgb(223,220,211);
+	font-family: "Bitstream Charter", Georgia, Cambria, "Times New Roman", Times, serif;
 	color : rgb(56, 56, 77);
-	font-size: 10px;
-	font-weight:bold;
 	margin:0;
 }
 .title{
@@ -25,36 +23,66 @@ header{
 }
 .article{
 	width:90%;
-	height:300px;
-	padding: 5px;
+	padding-left: 3%;
+	padding-top: 2%;
 	margin:5px 10px 20px 10px;
-	background-color:#f5d183;
-	border: 0.5rem outset rgb(49, 106, 180);
-	border-radius: 12px;
+	background-color:#efebd3;
+	box-shadow: rgb(0 0 0 / 40%) 0 3px 10px;
+	border-radius: 10px;
+	-webkit-border-radius: 10px;
+	/*border: 0.35rem outset rgb(49, 106, 180);
+	border-radius: 12px;*/
 }
+a{
+	text-decoration: none;
+
+
+}
+a:visited {
+	color: rgb(9, 23, 49);
+	background-color: transparent;
+	text-decoration: none;
+  }
 .article_title{
+	font-size: 40px;
 	color:green;
+	margin-top:0%;
 	height:5%;
 	}
 .date{
-	margin-left:8%;
-	color:blueviolet;
-	height:1%;
+	font-size: 15px;
+	color:rgb(122, 117, 131);
+	margin-top: 1%;
+	margin-left: 2%;
+	margin-bottom: 1%;
+}
+.article_information{
+	font-size: 1.17rem;
+	line-height: 1.18em;
+	display: flex;
+	height: 20vh;
+	color:cadetblue;
+}
+.image {
+	width: 20vh;
+	height: 17vh;
+	object-fit: cover;
 }
 .article_introduction{
-	font-style: oblique
-	font-size: 21px;
-	float:left;
-	width: 65%;
-	color:darkblue;
+	height: 17vh;
+	width: 85%;	
+	font-size: 1.17rem;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	color:rgb(0, 0, 0);
 	margin-top:1%;
 	margin-left: 3%;
 	margin-right:5%;
 }
 .article_cover{
 	margin-left:5%;
-	float:left;
-	width: 22%;
+	background-repeat: no-repeat;
+	background-size: 150px;
 }
 
 .container{
@@ -62,33 +90,34 @@ header{
 	margin:0 auto;
 }
 section{
-	float: left;
-	width:70%;
+	float: right;
+	width:75%;
 	margin-top:10px;
-	margin-left:2%;
+	margin-left:0%;
 	margin-bottom:100px;
 }
 
 aside{
 	font-size:25px;
-	float:right;
-	width:20%;
+	float:left;
+	width:23%;
 }
 
 footer{
-	background-color: rgb(224, 152, 93);
-	color:white;
+	background-color: rgb(80, 74, 68);
+	color:#c3bfbf;
 	clear: both;
 	padding:15px 0;
 	text-align:center;
 }
 .section{
-	background-color: #FBF3D5;
+	background-color: #edf2f3;
+	/*
 	border: 0.5rem outset pink;
  	outline: 0.5rem solid khaki;
   	box-shadow: 0 0 0 0.5rem skyblue;
+	  */
   	border-radius: 12px;
- 	font: bold 1rem sans-serif;
   	margin: 2rem;
   	padding: 0.5rem;
   	outline-offset: 0.5rem;
