@@ -94,12 +94,14 @@ section{
 aside{
 	font-size:25px;
 	float:left;
-	position: fixed; /* Fixed Sidebar (stay in place on scroll) */
+	/*position: fixed;  Fixed Sidebar (stay in place on scroll) */
 	width:18%;
 	padding-left:2%;
+	/*
 	box-shadow: rgb(0 0 0 / 40%) 0 3px 10px;
 	border-radius: 10px;
 	-webkit-border-radius: 10px;
+	*/
 }
 
 footer{
