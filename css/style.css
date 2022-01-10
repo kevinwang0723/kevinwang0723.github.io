@@ -38,6 +38,7 @@ a{
 
 
 }
+
 a:visited {
 	color: rgb(9, 23, 49);
 	background-color: transparent;
@@ -50,11 +51,12 @@ a:visited {
 	height:5%;
 	}
 .date{
+	font-style: oblique;
 	font-size: 15px;
 	color:rgb(122, 117, 131);
-	margin-top: 1%;
+	margin-top: 0.5%;
 	margin-left: 2%;
-	margin-bottom: 1%;
+	margin-bottom: 0.5%;
 }
 .article_information{
 	font-size: 1.17rem;
@@ -79,6 +81,17 @@ a:visited {
 	margin-left: 3%;
 	margin-right:5%;
 }
+
+.noselect {
+	-webkit-touch-callout: none; /* iOS Safari */
+	  -webkit-user-select: none; /* Safari */
+	   -khtml-user-select: none; /* Konqueror HTML */
+		 -moz-user-select: none; /* Old versions of Firefox */
+		  -ms-user-select: none; /* Internet Explorer/Edge */
+			  user-select: none; /* Non-prefixed version, currently
+									supported by Chrome, Edge, Opera and Firefox */
+  }
+  
 .container{
 	width:80%;
 	margin:0 auto;
@@ -179,6 +192,28 @@ h2 {
 	-webkit-border-radius: 10px;
 }
 
+.highlight{
+	color: black;
+	border-width: 3px;
+	font-style: oblique;
+	font-weight:bold;
+	background-color: #e7e1b9;;
+	font-size: 30px;
+	width: 70%;
+	margin-top: 5px;
+	max-width: 1200px;
+	margin-left: auto;
+	margin-right:auto;
+	margin-bottom: 50px;
+	padding-top: 15px;
+	padding-right: 30px;
+	padding-bottom: 15px;
+	padding-left: 30px;
+	border-width: 15px;
+	border-color: rgb(26 25 13)
+	box-shadow: rgb(0 0 0 / 40%) 0 3px 10px;
+	border-style:double;
+}
 
 
 .bob-container{
