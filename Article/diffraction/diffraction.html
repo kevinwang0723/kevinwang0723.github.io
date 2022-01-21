@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Diffraction</title>
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="icon" href="../../img/logo.png"/>
+    <script type="text/x-mathjax-config">   
+        MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+    </script>
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript">
+    </script>
+  </head>
+  
+  
+<body class="noselect">
+    <h2 class="title">diffraction</h2>
+
+    
+    <div class="section">
+        <img src="./img/shor.png" width="500px" class="center">
+        \[dE=\left(\frac{{\varepsilon }_A}{r}\right)e^{i(\omega t-kr)}dS\] 
+        \[r=\sqrt{X^2+{\left(Y-y\right)}^2+{\left(Z-z\right)}^2}\] 
+        \textit{where}
+        \[R=\sqrt{X^2+Y^2+Z^2}\] 
+        \[r=\sqrt{X^2+Y^2+Z^2-(2Yy+2Zz)}=\sqrt{\left(X^2+Y^2+Z^2\right)\left(1-\frac{2}{R^2}\left(Yy+Zz\right)\right)}\] 
+        \[=R{\left(1-\frac{2}{R^2}\left(Yy+Zz\right)\right)}^{\frac{1}{2}}\cong R\left(1-\frac{1}{R^2}\left(Yy+Zz\right)\right)\] 
+        \[dE=\left(\frac{{\varepsilon }_A}{r}\right)e^{i\left(\omega t-kR\right)}e^{ik(Yy+Zz)/R}dS\] 
+        \textit{Therefore }
+        \[E\left(X,Y,Z\right)=\frac{{\varepsilon }_Ae^{i\left(\omega t-kR\right)}}{r}\int{\int_{Aperture}{e^{ik(Yy+Zz)/R}dS}}\] 
+        \[E\left(X,Y,Z\right)=\frac{{\varepsilon }_Ae^{i\left(\omega t-kR\right)}}{r}\int^{y=\infty }_{y=-\infty }{\int^{z=\infty }_{z=-\infty }{{\mathcal{A}\left(y,z\right)e}^{ik(Yy+Zz)/R}dydz}}\] 
+        \textit{If we consider a plane with distance x=R between }
+        \[E\left(Y,Z\right)=\frac{{\varepsilon }_Ae^{i\left(\omega t-kR\right)}}{r}\int^{y=\infty }_{y=-\infty }{\int^{z=\infty }_{z=-\infty }{{\mathcal{A}\left(y,z\right)e}^{ik(Yy+Zz)/R}dydz}}=\mathcal{F}\left\{\mathcal{A}(y,z)\right\}\] 
+        \textit{Finally, we derive the relation between aperture and electrical field after diffraction is just Fourier transform.}
+        in addition, if we consider the aperture in one dimension, the analysis result is similar and we will get the Fourier transform as well
+        \[E\left(Z\right)=\frac{{\varepsilon }_Ae^{i\left(\omega t-kR\right)}}{r}\int^{z=\infty }_{z=-\infty }{{\mathcal{A}\left(z\right)e}^{\frac{ikZz}{R}}dz}=\mathcal{F}\left\{\mathcal{A}(z)\right\}\] 
+        It is easily to confirm the result by testing some common diffraction aperture such as the single slit and double slit 
+
+        
+
+        Example 1. Single slit diffraction
+
+        Assume the slit size is a
+        \[\left\{ \begin{array}{c}
+        \mathcal{A}\left(z\right)=1\ ,\ \ -\frac{a}{2} \lt z \lt \frac{a}{2} \\ 
+        \mathcal{A}\left(z\right)=0\ ,\ \ \frac{a}{2} \lt \left|z\right| \end{array}
+        \right.\] 
+        Therefore the electrical field on the film will become
+        \[E\left(Z\right)=\frac{{\varepsilon }_Ae^{i\left(\omega t-kR\right)}}{r}\int^{z=\frac{a}{2}}_{z=-\frac{a}{2}}{e^{\frac{ikZz}{R}}dz}=\frac{{\varepsilon }_Ae^{i\left(\omega t-kR\right)}}{r}\frac{R}{ikZ}\left(e^{\frac{ikZa}{2R}}-e^{-\frac{ikZa}{2R}}\right)\] 
+        \[E\left(Z\right)=\frac{2{\varepsilon }_Ae^{i\left(\omega t-kR\right)}}{kZ}\frac{\left(e^{\frac{ikZa}{2R}}-e^{-\frac{ikZa}{2R}}\right)}{2i}=\frac{{\varepsilon }_Ae^{i\left(\omega t-kR\right)}a}{R}\frac{\left(e^{\frac{ikZa}{2R}}-e^{-\frac{ikZa}{2R}}\right)}{2i\frac{kZa}{2R}}\ \] 
+        \[E\left(Z\right)=\frac{{\varepsilon }_Ae^{i\left(\omega t-kR\right)}a}{R}\frac{{sin \left(\frac{kZa}{2R}\right)\ }}{\frac{kZa}{2R}}\ \ \] 
+        \[sinx=\frac{e^{ix}-e^{-ix}}{2i}\] 
+        the total intensity which we can observe is the amplitude of electrical field.
+        \[I\left(Z\right)={\left|E\left(Z\right)\right|}^2=\frac{{{\varepsilon }_A}^2a^2}{R^2}{sinc}^2\left(\frac{kZa}{2R}\right)\] 
+        We can simply our equation in $\theta $ ,since $\theta $ is the angle between slit and the wall
+        \[\theta =\frac{Z}{R}\] 
+        \[\frac{kZa}{2R}=\frac{2\pi Za}{2\lambda R}=\frac{\pi a\theta }{\lambda }=\beta \] 
+        \[I\left(Z\right)={\left|E\left(Z\right)\right|}^2=\frac{{{\varepsilon }_A}^2a^2}{R^2}{sinc}^2\left(\beta \right)\] 
+
+
+        
+
+        We can do the same calculation with double slit, assume two slit separate with distance a
+        \[\left\{ \begin{array}{c}
+        \mathcal{A}\left(z\right)=1\ ,\ \ -\frac{b}{2} \lt z \lt \frac{b}{2} \\ 
+        \mathcal{A}\left(z\right)=1\ ,\ \ a-\frac{b}{2} \lt z \lt a+\frac{b}{2} \\ 
+        \mathcal{A}\left(z\right)=0\ ,\ \ else \end{array}
+        \right.\] 
+
+        \[E\left(Z\right)=\frac{{\varepsilon }_Ae^{i\left(\omega t-kR\right)}}{r}\left(\int^{z=\frac{b}{2}}_{z=-\frac{b}{2}}{e^{\frac{ikZz}{R}}dz}+\int^{z=a+\frac{b}{2}}_{z=a-\frac{b}{2}}{e^{\frac{ikZz}{R}}dz}\right)\] 
+        \[=\frac{{\varepsilon }_Ae^{i\left(\omega t-kR\right)}}{r}\frac{R}{ikZ}\left(\left(e^{\frac{ikZ}{2R}\left(\frac{b}{2}\right)}-e^{-\frac{ikZ}{2R}\left(\frac{b}{2}\right)}\right)+\left(e^{\frac{ikZ}{2R}\left(a+\frac{b}{2}\right)}-e^{\frac{ikZ}{2R}\left(a-\frac{b}{2}\right)}\right)\right)\] 
+
+        \[=\frac{{\varepsilon }_Ae^{i\left(\omega t-kR\right)}}{r}\frac{R}{ikZ}\left(\left(e^{\frac{ikZ}{2R}\left(\frac{b}{2}\right)}-e^{-\frac{ikZ}{2R}\left(\frac{b}{2}\right)}\right)+e^{\frac{ikZ}{2R}a}\left(e^{\frac{ikZ}{2R}\left(\frac{b}{2}\right)}-e^{-\frac{ikZ}{2R}\left(\frac{b}{2}\right)}\right)\right)\] 
+        \[=\frac{{\varepsilon }_Ae^{i\left(\omega t-kR\right)}}{r}\frac{R}{ikZ}\left(e^{\frac{ikZ}{2R}\left(\frac{b}{2}\right)}-e^{-\frac{ikZ}{2R}\left(\frac{b}{2}\right)}\right)\left(1+e^{\frac{ikZ}{2R}a}\right)\] 
+        \[=\frac{{\varepsilon }_Ae^{i\left(\omega t-kR\right)}}{r}\frac{b}{4}\ \frac{\left(e^{\frac{ikZ}{2R}\left(\frac{b}{2}\right)}-e^{-\frac{ikZ}{2R}\left(\frac{b}{2}\right)}\right)}{2i\times \frac{kZb}{4R}}\left(1+e^{\frac{ikZ}{2R}a}\right)\] 
+        \[=\frac{{\varepsilon }_Ae^{i\left(\omega t-kR\right)}}{r}\frac{b}{4}\ sinc\left(\frac{kZb}{4R}\right)\left(1+e^{\frac{ikZ}{2R}a}\right)\] 
+
+
+        
+        \[1+e^{\frac{ikZ}{2R}a}=e^{\frac{ikZ}{4R}a}\left(e^{-\frac{ikZ}{4R}a}+e^{\frac{ikZ}{4R}a}\right)=2e^{\frac{ikZ}{4R}a}{cos \left(\frac{kZ}{4R}a\right)\ }\] 
+
+        \[=\frac{{\varepsilon }_Ae^{i\left(\omega t-kR\right)}}{r}\frac{b}{2}\ e^{\frac{ikZ}{4R}a}sinc\left(\frac{kZb}{4R}\right){cos \left(\frac{kZa}{4R}\right)\ }\] 
+
+
+        Set
+        \[\frac{kZb}{4R}=\beta \] 
+        \[\frac{kZa}{4R}=\alpha \] 
+        \[E=\frac{{\varepsilon }_Ae^{i\left(\omega t-kR\right)}}{r}\frac{b}{2}\ e^{i\alpha }sinc\left(\beta \right){cos \left(\alpha \right)\ }\] 
+
+
+        Finally, the intensity will be the square of electrical field.
+        \[I=\frac{{{\varepsilon }_A}^2a^2}{4R^2}b^2\ {sinc}^2\left(\beta \right){{cos}^2 \alpha \ }\] 
+
+    </div>
+
+      <center><h1><a href="../../index.html">Home</a></h1></center>
+</body>
+    
+</html>

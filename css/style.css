@@ -167,7 +167,6 @@ h2 {
 	margin-left: auto;
 	margin-right: auto;
 	margin-top: 15px;
-	
   }
 
 .sub_section{
@@ -215,6 +214,19 @@ h2 {
 	border-style:double;
 }
 
+.highlight_formula{
+	color: black;
+	border-width: 3px;
+	font-style: oblique;
+	font-weight:bold;
+	background-color: #e5aa94;
+	width: 40%;
+	margin-left: auto;
+	margin-right:auto;
+	border-width: 5px;
+	border-color: rgb(26 25 13);
+	border-style:solid;
+}
 
 .bob-container{
 	margin: 0 auto;
