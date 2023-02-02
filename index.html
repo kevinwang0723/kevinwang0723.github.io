@@ -5,6 +5,11 @@
     <title>K!W! BiRD</title>
     <link rel="stylesheet" href="./css/style.css">
     <link rel="icon" href="./img/logo.png"/>
+    <script type="text/x-mathjax-config">   
+      MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+    </script>
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript">
+    </script>
   </head>
   
   <body bgcolor="#C4E1FF">
@@ -22,7 +27,8 @@
       <section>
         <div class="section">
           <h1 style=font-size:40px;>News</h1>
-            
+            2023/01/22 Happy Lunar New Year!  Wish both of us enjoy a productive year!
+            <br><br>
             2022/01/22 有一天波耳對電子說：哥 你是軌吧?
             <br><br>
             2021/12/20 Merry Christmas! Enjoy the latest article about the secret santa problem!
@@ -32,6 +38,18 @@
         <div class="section">
           <h1  style=font-size:40px;>Articles</h1>
            <!--  1 article -->
+          <div class="article">
+            <div class="article_title"><a href="./Article/bk_adder/bk_adder.html">Introduction to Brent–Kung adder</a></div>
+            <div class="date">2023/02/02 , Electrical Enginering</div>                 
+            <div class="article_information">              
+              <img src="./Article/bk_adder/img/10.png" class="image"/>
+              <div class="article_introduction">
+                這篇文章會以數學的推導介紹現行計算機結構當中主流加法器Brent–Kung adder，以巧妙的電路架構設計(Architecture)可以將原本時間複雜度$O(N)$的Ripple-carry adder優化為$O(logN)$。
+                在現今的電腦當中組成的最基礎元素包含了算術邏輯元(ALU , Arithmetic logic unit) 及記憶體，從硬體端中設計出好的ALU及memory可以加速程式在硬體上處理的速度，因此為了提高程式處理
+                的效率除了能針對程式(code)編寫的演算法做優化，也能針對硬體設計加速程式計算的速度。今天我們來談談最基礎的算術邏輯元當中最基本的加法器(adder)。
+              </div>
+            </div>    
+          </div>
           <div class="article">
             <div class="article_title"><a href="./Article/Rabi_oscillate/rabi_oscillate.html">Implementing Quantum Gates and Rabi Oscillation</a></div>
             <div class="date">2022/01/22 , Class Notes</div>                 
@@ -177,6 +195,7 @@
           <ol>
             <li><a href="./category/physics.html">Physics</a></li>
             <li><a href="./category/math.html">Math</a></li>
+            <li><a href="./category/electrical_enginnering.html">EE/CS</a></li>
             <li><a href="./category/chemistry.html">Chemistry</a></li>
             <li><a href="./category/class_notes.html">Class Notes</a></li>
             <li><a href="./category/experiments.html">Experiments</a></li>
@@ -190,7 +209,7 @@
 
     </div>
     <footer>
-      <p><h1>Latest update : 2022/01/22</h1></p>
+      <p><h1>Latest update : 2023/02/02</h1></p>
       <p><h1>Special Thanks : EG ,Ray Wu </h1></p>
       <p><h1>Contact : kiwibird0723@gmail.com</h1></p>
     </footer>

@@ -214,6 +214,9 @@ h2 {
 	border-style:double;
 }
 
+figure figcaption {
+    text-align: center;
+}
 .highlight_formula{
 	color: black;
 	border-width: 3px;

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Coupled Oscillator</title>
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="icon" href="../../img/logo.png"/>
+    <script type="text/x-mathjax-config">   
+        MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+    </script>
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript">
+    </script>
+  </head>
+  
+  
+<body class="noselect">
+    <h2 class="title">Coupled Oscillator</h2>
+
+    
+    <div class="section">
+        <img src="./img/shor.png" width="500px" class="center">
+   
+        THE HARD PROBLEM ------ Coupled Oscillator Pendulum    Kevin Wang 20200703 
+
+        <div class="sub_section">
+          
+        </div>
+
+        \[\left\{ \begin{array}{c}
+        -\frac{\mathop{a}\limits^{\rightharpoonup}}{s}t+\frac{\mathop{d}\limits^{\rightharpoonup}}{d}\tau +\frac{\mathop{L_1}\limits^{\rightharpoonup}}{L}mg=0\ \cdots \left(1\right) \\ 
+        \frac{\mathop{b}\limits^{\rightharpoonup}}{s}t-\frac{\mathop{d}\limits^{\rightharpoonup}}{d}\tau +\frac{\mathop{L_2}\limits^{\rightharpoonup}}{L}mg=0\ \cdots \left(2\right) \end{array}
+        \right.\] 
+        \[\left\{ \begin{array}{c}
+        m\left(\ddot{\mathop{a}\limits^{\rightharpoonup}}+\ddot{\mathop{L_1}\limits^{\rightharpoonup}}\right)=mg\hat{z}-\frac{\mathop{L_1}\limits^{\rightharpoonup}}{L}mg\ \cdots \left(a\right) \\ 
+        m\left(-\ddot{\mathop{b}\limits^{\rightharpoonup}}+\ddot{\mathop{L_2}\limits^{\rightharpoonup}}\right)=mg\hat{z}-\frac{\mathop{L_2}\limits^{\rightharpoonup}}{L}mg\ \cdots \left(b\right) \end{array}
+        \right.\] 
+        Take y components
+        \[\left\{ \begin{array}{c}
+        m\left(\ddot{\mathop{a_y}\limits^{\rightharpoonup}}+\ddot{\mathop{L_{1y}}\limits^{\rightharpoonup}}\right)=-\frac{\mathop{L_{1y}}\limits^{\rightharpoonup}}{L}mg\cdots \left(a'\right) \\ 
+        m\left(-\ddot{\mathop{b_y}\limits^{\rightharpoonup}}+\ddot{\mathop{L_{2y}}\limits^{\rightharpoonup}}\right)=-\frac{\mathop{L_{2y}}\limits^{\rightharpoonup}}{L}mg\cdots \left(b'\right) \end{array}
+        \right.\] 
+        (a')+(b')
+        \[m\left(\ddot{\mathop{a_y}\limits^{\rightharpoonup}}-\ddot{\mathop{b_y}\limits^{\rightharpoonup}}+\ddot{\mathop{L_{1y}}\limits^{\rightharpoonup}}+\ddot{\mathop{L_{2y}}\limits^{\rightharpoonup}}\right)=-\frac{mg}{L}\left(\mathop{L_{1y}}\limits^{\rightharpoonup}+\mathop{L_{2y}}\limits^{\rightharpoonup}\right)\cdots \left(c\right)\] 
+        (1)+(2)
+        \[\left(-\frac{\mathop{a}\limits^{\rightharpoonup}}{s}t+\frac{\mathop{d}\limits^{\rightharpoonup}}{d}\tau +\frac{\mathop{L_1}\limits^{\rightharpoonup}}{L}mg\right)+\left(\frac{\mathop{b}\limits^{\rightharpoonup}}{s}t-\frac{\mathop{d}\limits^{\rightharpoonup}}{d}\tau +\frac{\mathop{L_2}\limits^{\rightharpoonup}}{L}mg\right)=0\] 
+        \[\left(-\mathop{a}\limits^{\rightharpoonup}+\mathop{b}\limits^{\rightharpoonup}\right)\frac{t}{s}+\left(\mathop{L_1}\limits^{\rightharpoonup}+\mathop{L_2}\limits^{\rightharpoonup}\right)\frac{mg}{L}=0\ \] 
+        \[\left(\mathop{a}\limits^{\rightharpoonup}-\mathop{b}\limits^{\rightharpoonup}\right)=\left(\mathop{L_1}\limits^{\rightharpoonup}+\mathop{L_2}\limits^{\rightharpoonup}\right)\frac{mgs}{Lt}\ \] 
+        Take y component and second order differential over time
+        \[\left(\ddot{\mathop{a_y}\limits^{\rightharpoonup}}-\ddot{\mathop{b_y}\limits^{\rightharpoonup}}\right)=\left(\ddot{\mathop{L_{1y}}\limits^{\rightharpoonup}}+\ddot{\mathop{L_{2y}}\limits^{\rightharpoonup}}\right)\frac{mgs}{Lt}\ \cdots \left(d\right)\ \] 
+        Plug (d) in to (c)
+        \[m\left(\ddot{\mathop{L_{1y}}\limits^{\rightharpoonup}}+\ddot{\mathop{L_{2y}}\limits^{\rightharpoonup}}\right)\left(1+\frac{mgs}{Lt}\right)=-\frac{mg}{L}\left(\mathop{L_{1y}}\limits^{\rightharpoonup}+\mathop{L_{2y}}\limits^{\rightharpoonup}\right)\] 
+        \[\frac{g}{L\left(1+\frac{mgs}{Lt}\right)}\left(\mathop{L_{1y}}\limits^{\rightharpoonup}+\mathop{L_{2y}}\limits^{\rightharpoonup}\right)+\left(\ddot{\mathop{L_{1y}}\limits^{\rightharpoonup}}+\ddot{\mathop{L_{2y}}\limits^{\rightharpoonup}}\right)=0\cdots \left(e\right)\] 
+        Define
+        \[\mathop{L_{1y}}\limits^{\rightharpoonup}+\mathop{L_{2y}}\limits^{\rightharpoonup}=\mathop{{\eta }_1}\limits^{\rightharpoonup}\] 
+        \[\ddot{\mathop{L_{1y}}\limits^{\rightharpoonup}}+\ddot{\mathop{L_{2y}}\limits^{\rightharpoonup}}=\ddot{\mathop{{\eta }_1}\limits^{\rightharpoonup}}\] 
+        Equation e can be rewrite in following form
+        \[{\omega }^2_s\mathop{{\eta }_1}\limits^{\rightharpoonup}+\ddot{\mathop{{\eta }_1}\limits^{\rightharpoonup}}=0\] 
+        Where 
+        \[{\omega }^2_s=\frac{g}{L\left(1+\frac{mgs}{Lt}\right)}\] 
+        Which is known as the characteristic frequency of the system under symmetric mode.
+
+        (a')-(b')
+        \[m\left(\ddot{\mathop{a_y}\limits^{\rightharpoonup}}+\ddot{\mathop{b_y}\limits^{\rightharpoonup}}+\ddot{\mathop{L_{1y}}\limits^{\rightharpoonup}}-\ddot{\mathop{L_{2y}}\limits^{\rightharpoonup}}\right)=-\frac{mg}{L}\left(\mathop{L_{1y}}\limits^{\rightharpoonup}-\mathop{L_{2y}}\limits^{\rightharpoonup}\right)\cdots \left(f\right)\] 
+        (1)-(2)
+        \[\left(-\frac{\mathop{a}\limits^{\rightharpoonup}}{s}t+\frac{\mathop{d}\limits^{\rightharpoonup}}{d}\tau +\frac{\mathop{L_1}\limits^{\rightharpoonup}}{L}mg\right)-\left(\frac{\mathop{b}\limits^{\rightharpoonup}}{s}t-\frac{\mathop{d}\limits^{\rightharpoonup}}{d}\tau +\frac{\mathop{L_2}\limits^{\rightharpoonup}}{L}mg\right)=0\] 
+        \[-\left(\mathop{a}\limits^{\rightharpoonup}+\mathop{b}\limits^{\rightharpoonup}\right)\frac{t}{s}+2\frac{\mathop{d}\limits^{\rightharpoonup}}{d}\tau +\left(\mathop{L_1}\limits^{\rightharpoonup}-\mathop{L_2}\limits^{\rightharpoonup}\right)\frac{mg}{L}=0\ \] 
+        \[-\left(\ddot{\mathop{a}\limits^{\rightharpoonup}}+\ddot{\mathop{b}\limits^{\rightharpoonup}}\right)\frac{t}{s}+2\frac{\ddot{\mathop{d}\limits^{\rightharpoonup}}}{d}\tau +\left(\ddot{\mathop{L_1}\limits^{\rightharpoonup}}-\ddot{\mathop{L_2}\limits^{\rightharpoonup}}\right)\frac{mg}{L}=0\ \cdots \left(g\right)\] 
+
+
+        In order to eliminate $\mathop{d}\limits^{\rightharpoonup}$ , we introduce a trivial relation
+        \[\mathop{D}\limits^{\rightharpoonup}=\mathop{a}\limits^{\rightharpoonup}+\mathop{d}\limits^{\rightharpoonup}+\mathop{b}\limits^{\rightharpoonup}\] 
+        Where $\mathop{D}\limits^{\rightharpoonup}$ is the vector between the two fix points, and therefore is a constant, therefore we can take the second derivative of both side.
+        \[\ddot{\mathop{D}\limits^{\rightharpoonup}}=\ddot{\mathop{a}\limits^{\rightharpoonup}}+\ddot{\mathop{d}\limits^{\rightharpoonup}}+\ddot{\mathop{b}\limits^{\rightharpoonup}}=0\] 
+        \[-\left(\ddot{\mathop{a}\limits^{\rightharpoonup}}+\ddot{\mathop{b}\limits^{\rightharpoonup}}\right)=\ddot{\mathop{d}\limits^{\rightharpoonup}}\cdots \left(h\right)\] 
+        Pluging h in to g
+        \[-\left(\ddot{\mathop{a}\limits^{\rightharpoonup}}+\ddot{\mathop{b}\limits^{\rightharpoonup}}\right)\frac{t}{s}-2\frac{\left(\ddot{\mathop{a}\limits^{\rightharpoonup}}+\ddot{\mathop{b}\limits^{\rightharpoonup}}\right)}{d}\tau +\left(\ddot{\mathop{L_1}\limits^{\rightharpoonup}}-\ddot{\mathop{L_2}\limits^{\rightharpoonup}}\right)\frac{mg}{L}=0\] 
+        Take the y component
+        \[\left(\ddot{\mathop{a_y}\limits^{\rightharpoonup}}+\ddot{\mathop{b_y}\limits^{\rightharpoonup}}\right)\left(\frac{t}{s}+\frac{2\tau }{d}\right)=\left(\ddot{\mathop{L_{1y}}\limits^{\rightharpoonup}}-\ddot{\mathop{L_{2y}}\limits^{\rightharpoonup}}\right)\frac{mg}{L}\] 
+        \[\left(\ddot{\mathop{a_y}\limits^{\rightharpoonup}}+\ddot{\mathop{b_y}\limits^{\rightharpoonup}}\right)=\left(\ddot{\mathop{L_{1y}}\limits^{\rightharpoonup}}-\ddot{\mathop{L_{2y}}\limits^{\rightharpoonup}}\right)\frac{mg}{L\left(\frac{t}{s}+\frac{2\tau }{d}\right)}\] 
+        Plug (i) into (f)
+        \[\left(1+\frac{mg}{L\left(\frac{t}{s}+\frac{2\tau }{d}\right)}\right)\left(\ddot{\mathop{L_{1y}}\limits^{\rightharpoonup}}-\ddot{\mathop{L_{2y}}\limits^{\rightharpoonup}}\right)=-\frac{g}{L}\left(\mathop{L_{1y}}\limits^{\rightharpoonup}-\mathop{L_{2y}}\limits^{\rightharpoonup}\right)\] 
+        Define
+        \[\mathop{L_{1y}}\limits^{\rightharpoonup}-\mathop{L_{2y}}\limits^{\rightharpoonup}=\mathop{{\eta }_2}\limits^{\rightharpoonup}\] 
+        \[\ddot{\mathop{L_{1y}}\limits^{\rightharpoonup}}-\ddot{\mathop{L_{2y}}\limits^{\rightharpoonup}}=\ddot{\mathop{{\eta }_2}\limits^{\rightharpoonup}}\] 
+        Equation e can be rewrite in following form
+        \[{\omega }^2_a\mathop{{\eta }_2}\limits^{\rightharpoonup}+\ddot{\mathop{{\eta }_2}\limits^{\rightharpoonup}}=0\] 
+        \[{\omega }^2_a=\frac{g}{L\left(1+\frac{mg}{L\left(\frac{t}{s}+\frac{2\tau }{d}\right)}\right)}\] 
+        Which is known as the second characteristic frequency of the system under anti-symmetric mode.
+
+        Therefore, by solving the ode, we can get following equation
+        \[\mathop{{\eta }_1}\limits^{\rightharpoonup}=Acos\left({\omega }_st+{\phi }_1\right)=\mathop{L_{1y}}\limits^{\rightharpoonup}+\mathop{L_{2y}}\limits^{\rightharpoonup}\dots (i)\] 
+
+        \[\mathop{{\eta }_2}\limits^{\rightharpoonup}=Bcos\left({\omega }_at+{\phi }_2\right)=\mathop{L_{1y}}\limits^{\rightharpoonup}-\mathop{L_{2y}}\limits^{\rightharpoonup}\dots (ii)\] 
+        \[{\omega }^2_s=\frac{g}{L\left(1+\frac{mgs}{Lt}\right)}\] 
+
+        \[{\omega }^2_a=\frac{g}{L\left(1+\frac{mg}{L\left(\frac{t}{s}+\frac{2\tau }{d}\right)}\right)}\] 
+
+
+        Finally, in order to get each pendelumn motion respectively, we need to express object 1 using L\_1y not using {\textbackslash}ita 2. As a result, we can derive L1\_y by adding ita1 and ita2 which we already solve the differential equation in {\textbackslash}ita. 
+        \[\left(i\right)+\left(ii\right)\ \ :\ \ \mathop{L_{1y}}\limits^{\rightharpoonup}=Acos\left({\omega }_st+{\phi }_1\right)+Bcos\left({\omega }_at+{\phi }_2\right)\] 
+        \[\left(i\right)-\left(ii\right)\ \ :\ \ \mathop{L_{2y}}\limits^{\rightharpoonup}=Acos\left({\omega }_st+{\phi }_1\right)-Bcos\left({\omega }_at+{\phi }_2\right)\] 
+        Using the initial condition v1=v2=0
+        \[\mathop{L_{1y}}\limits^{\rightharpoonup}=Acos\left({\omega }_st\right)+Bcos\left({\omega }_at\right)=2A_0cos\left(\frac{{\omega }_s+{\omega }_a}{2}t\right)cos\left(\frac{{\omega }_s-{\omega }_a}{2}t\right)\] 
+        \[\mathop{L_{2y}}\limits^{\rightharpoonup}=Acos\left({\omega }_st\right)-Bcos\left({\omega }_at\right)=-2A_0sin\left(\frac{{\omega }_s+{\omega }_a}{2}t\right)sin\left(\frac{{\omega }_s-{\omega }_a}{2}t\right)\] 
+
+    </div>
+
+      <center><h1><a href="../../index.html">Home</a></h1></center>
+</body>
+    
+</html>
