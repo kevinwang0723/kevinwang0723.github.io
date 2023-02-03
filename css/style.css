@@ -191,6 +191,27 @@ h2 {
 	-webkit-border-radius: 10px;
 }
 
+.sub2_section{
+
+	border-width: 3px;
+	background-color: #e4ce85;
+	font-size: 20px;
+	width: 90%;
+	margin-top: 10px;
+	max-width: 1200px;
+	margin-left: auto;
+	margin-right:auto;
+	margin-bottom: 50px;
+	padding-top: 15px;
+	padding-right: 30px;
+	padding-bottom: 50px;
+	padding-left: 30px;
+	border-width: 15px;
+	border-color: blue;
+	box-shadow: rgb(0 0 0 / 40%) 0 3px 10px;
+	border-radius: 10px;
+	-webkit-border-radius: 10px;
+}
 .highlight{
 	color: black;
 	border-width: 3px;
@@ -216,6 +237,8 @@ h2 {
 
 figure figcaption {
     text-align: center;
+	font-style: italic;
+	font-size:medium;
 }
 .highlight_formula{
 	color: black;
