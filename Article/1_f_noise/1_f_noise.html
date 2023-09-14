@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Physics Model For the 1/f Noise in MOSFET</title>
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="icon" href="../../img/logo.png"/>
+    <script type="text/x-mathjax-config">   
+        MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+    </script>
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+    <meta property="og:image" content="./img/10.png">
+    
+  </head>
+  
+  
+<body  class="noselect">
+    <h2 class="title">Physics Model For the 1/f Noise in MOSFET</h2>
+        <div class="section">
+            <h1>Introdution</h1>
+            1/f noise 在MOSFET的電路設計當中是不可忽略的非理想效應。它的成因是來自於氧化層介面的缺陷捕捉過程，因此也成為評斷氧化層品質的指標。
+            本文以物理模型搭配訊號處理的理論，推導出2-Level Trap 在Poisson Process下的功率頻譜，並推導出1/f頻譜的數學公式，同時也用程式模擬驗證。
+            當中的物理概念和分析手法，值得我們學習與欣賞。
+            <figure>
+                <img src="./img/cover.png" width="450px" class="center">
+                <figcaption>1/f Power Spectrum and MOSFET</figcaption>
+            </figure>
+            <span style="font-style:italic;">Prior knowledge: Electronic, Physics, Signal Process </span>
+            
+        </div>
+    <div class="section">
+        <h1>Introdution of noise</h1>
+        雜訊無所不在，對於任何的物理量，不論是環境的溫度、水庫的水位、又或者是股票市場當中震盪的價格都存在著浮動。所以說只要對自然界的任何物理量，看似穩定的系統不斷的做抽樣量測，只要儀器夠
+        精準都能量出數值的浮動。簡單來說，如果把一個電池接上一個電阻並測量兩端的電流，若是使用高精準的安培計測量可以發現兩端的電流會有些許震盪，就如一個穩定的訊號加上一點雜訊
+        \[I(t) = \bar{I} + i(t)\]
+        <figure>
+            <img src="./img/1.png" width="500px" class="center">
+            <figcaption> Noise observe in the data </figcaption>
+        </figure>
+        那我們就稱$i(t)$為系統的雜訊(noise)。儘管雜訊的存在會影響系統的穩定並造成應用上的困擾，例如限制了訊息傳輸和數據處理的速度，然而訊號中的雜訊卻夾帶著微觀系統與周圍環境互動的重要訊息，
+        成為分析和研究的重要指標。
+        <br><br>
+        如今雜訊噪音的研究目前已涵蓋了各個領域當中，包含了生物神經科學(Neuron Science)、通訊(Communication)、光學(Optics)、半導體元件(Semiconductor)、經濟學(Economics)、非線性系統
+        (Non-Linear System)、量子資訊(Quantum Information)等等。而接下來我們將針對半導體元件的雜訊噪音做介紹並從理論探討其形成的機制。       
+        <figure>
+            <img src="./img/2.png" width="500px" class="center">
+            <figcaption> Comon 1/f spectrum from Differnet field, Wikipidea </figcaption>
+        </figure>
+        有關噪音的分析(上述當中的$i(t)$)，最簡的方式就是透過傅立葉轉換得到的雜訊頻譜作分析。傅立葉轉換可以將看似雜亂無章的雜訊$i(t)$拆解成數個頻率不同、相位、震幅不同的sin波的疊加
+        \[i(t) = \sum_{\omega=0}^{\infty} A(\omega) \cos(\omega t + \phi) = \int_{\omega=0}^{\omega=\infty} A(\omega) e^{i(\omega t + \phi)} \, dt\]
+        舉例來說，把一段一個人說話的聲音訊號做傅立葉轉換，可以得到頻譜。聲音訊號的頻譜又可以稱做聲紋，當中夾帶了共振腔體的共振頻率等，成為一個人有如指紋般獨一無二的聲音特徵，是分析訊號常見的手法。
+        <figure>
+            <img src="./img/4.png" width="650px" class="center">
+            <figcaption> Human sounds and FFT spectrum , Wikipidea </figcaption>
+        </figure>
+        
+        相同的，若是我們將一個場效電晶體(MOSFET)的Gate和Drain(閘極和汲極)給定一個固定電壓並測量Drain current，會發現一個穩定的電流訊號外加一個微小的雜訊，此雜訊被稱作低頻雜訊。那實際上這樣的雜
+        訊夾帶著有關電晶體氧化層缺陷密度捕捉的訊息，成為分析電晶體製程的常見的手法，關於這樣的原理與細節我們會在接下來仔細說明。<figure>
+        <img src="./img/5.png" width="450px" class="center">
+            <figcaption> MOSFET connection and measured noised data </figcaption>
+        </figure>
+        <span style="font-style:italic;">
+            [註解3]當時其實不是直接想去量alpha粒子的能量，原本是在測量核衰變的alpha粒子在空氣中能穿透多遠的距離(我猜測是想用核衰變的alpha粒子來做繞射相關的實驗，因此要抓距離)，然後就剛好
+            做了alpha粒子的能量量測。    
+        </span>
+
+    </div>
+
+    <div class="section">
+        <h1>The $1/f$ Noise in the MOSFET</h1>
+        現在討論到場效電晶體在穩定時的Drain Current，在閘極Gate和汲極Drain施加DC bias(穩定電壓)後，我們可以量到一個穩定的Drain Current以及些許的雜訊。有趣的是，在量測到這樣的雜雜訊後，無聊的工
+        程師和科學家將這樣的訊號去做傅立葉轉換分析頻譜，發現這樣的雜訊有著一個特殊的特徵：
+        <div style="text-align: center; font-size: 28px;">
+            <p><strong><em>他們觀察到在”低頻率的區域功率頻譜的強度會與頻率恰巧成反比關係"</em></strong></p>
+        </div>
+        也就是說，若是將傅立葉轉換後的功率頻譜與頻率以log  scale作圖，會發現頻譜的斜率恰巧為-1。然而這個特殊的現象卻是半導體元件內物理獨特的特徵，是在普通的電阻中無法看到的(一般的雜訊經過傅立
+        葉轉換後，僅會得到一個定值的功率頻譜，稱之白噪音)
+        <figure>
+            <img src="./img/222.png" width="350px" class="center">
+            <figcaption> 
+                Impact of interfacial layer on low-frequency noise of HfSiON dielectric MOSFETs,B Min,IEEE transactions on electron devices, 200
+            </figcaption> 
+        </figure>
+        而這樣在log-scale的頻譜當中有著斜率$-1$的雜訊被稱作$1/f$ noise，又或者稱作Pink noise(粉紅噪音)。科學家發現在大自然界許多聲音都有著類似的特徵，甚至在股市漲跌的微觀訊號中也有發現，而成因至
+        今尚未明瞭(題外話，有精神科醫師認為對失眠患者睡覺時撥放粉紅噪音能有助睡眠(?))。
+        <br><br>
+        然而這樣粉紅雜訊並不是都一直存在，只有在特定的系統中才會出現 ，常見其他種類的雜訊也有白噪音、棕噪音等。舉例來說，將白噪音做傅立葉轉換會發現頻率與功率頻譜的關係是個常數。
+        <figure>
+            <img src="./img/7.png" width="550px" class="center">
+            <figcaption> 
+                Differnet catagory type of noise
+            </figcaption> 
+        </figure>
+        那為什麼在電晶體當中會有$1/f$ noise的出現呢? 這個問題在應用上阻礙了類比電路的設計，由於電路有時需要處理低頻率的訊號，若是忽略了電晶體本身就自帶了低頻率的雜訊將會影響到訊號轉換的品質，好在
+        聰明的工程師在設計電路時，就會將電晶體自帶的$1/f$ noise建到電路模型當中，並用特殊的電路設計消除了這樣的問題。
+        <br><br>
+        那產生1/f noise的原因究竟是什麼呢? 為什麼只有經過電晶體的電流雜訊有著$1/f$ noise的特徵，而經過電阻的功率頻譜卻只是白噪音呢，這一切都要從電晶體的半導體特性談起。這個看似奇怪且困惑工程師許久
+        的問題，物理學家卻可以透過一個單純的物理模型給出合理的解釋以描述整個系統的機制。接下來我們用一個物理model搭配數學給出推導說明1/f noise的成因。
+    </div>
+    <div class="section">
+        <h1>Physics Model For the $1/f$ noise</h1>
+        <div class=sub_section>
+            <p style="font-size:30px">2-level trap model</p>
+            首先我們先猜測Drain current所測量到的電流浮動是來自於通道內原本受到Drain voltage作用下由Source通往Drain的電子被半導體通道和相鄰氧化層介面的缺陷捕捉所導致。此處的缺陷指的是氧化層中能
+            隙間(band gap)禁帶中因為介面重構和缺陷所形成的缺陷態(Trap State)，可用於容納電子。若是通道內的電子被氧化層的缺陷態捕捉，將導致通道內載子濃度的減少而降低電流；反之氧化層帶電荷的缺陷也
+            有機率性釋放電子至通道而增加電流。因此這樣來回的捕捉與釋放，就產生了量測上所觀察到的雜訊。
+            <figure>
+                <img src="./img/8.png" width="550px" class="center">
+                <figcaption> 
+                    2-level trap model in the interface between Si/SiO2
+                </figcaption> 
+            </figure>
+            至於為何這樣的雜訊在經過頻譜分析會得到$1/f$ 雜訊，則待接下來的解釋。現在我們基於缺陷的捕捉和釋放的模型進一步分析，現在我們先聚焦在單一組缺陷的捕捉釋放過程。
+            <br><br>
+            首先我們先假設缺陷與電子捕捉/釋放的機率為v，即在單位時間內電子有著機率$v$的可能會從通道被捕捉至缺陷，相同的也有著機率$v$由缺陷被釋放回通道。就如下圖當中，若是電子處於通道內則電流訊號為$a$，
+            若是被捕捉至缺陷則訊號為$-a$。
+            <figure>
+                <img src="./img/9.png" width="550px" class="center">
+                <figcaption> 
+                    2-level trap signal under poisson process
+                </figcaption> 
+            </figure>
+            而前述所說的Transition過程是完全隨機的現象，又被稱作普松過程(Poisson Process)。若是現在我們想知道在時間內T，發生了多少次的Transition，非常直覺的是期望值或是平均值將會是vT，但若是我
+            們想知道整個的分布呢? 因為vT僅是最有可能的躍遷次數，實際上可能是一個以vT為peak向兩側衰減的分布，此分布被稱作Poisson Distribution，可以由Poisson formula得知分布情形
+            \[p(m, T) = \frac{{(\nu T)^m}}{{m!}}e^{-\nu T}\]
+            <figure>
+                <img src="./img/10.png" width="550px" class="center">
+                <figcaption> 
+                    Poisson Distribution with $v=0.2$ $T=20$
+                </figcaption> 
+            </figure>
+            現在我們介紹自相關函數(Autocorrelation Function)，一種常見用於分析雜訊的手法。我們先看定義：
+            \[R(\tau) = \lim_{{T\to\infty}} \frac{1}{T} \int_{t=0}^{t=T}  x(t+\tau)  x(t) \, dt\]
+            在給定一個時間$t$ 對應的訊號$x(t)$，我們想知道接下來的訊號和$x(t)$的相關性，我們可以把時間t以後每個瞬間的訊號與之內積並取平均。在了解這樣的概念後我們來計算Poisson Process下的2-level trap system
+            所給出的Autocorrelation function為何。
+            <figure>
+                <img src="./img/11.png" width="550px" class="center">
+                <figcaption> 
+                    Autocorrelation funcinon is the prodcut between $x(t)$ and $x(t+\tau)$
+                </figcaption> 
+            </figure>
+            要計算autocorrelation function，我們必須得到距離$t$瞬間，時間$τ$ 之後的訊號$x(t+τ)$的值。而這個值看似困難且無法預測，但實際上我們可以用普松過程的假設搭配普松分布公式推出兩個狀態分別的機率。假設在
+            $t$時$x(t)=a$，那經過一段時間$τ$後$x(t+τ)$的可能只有兩種分別是$a$或是$-a$，那處在$a$的可能代表這段時間τ經歷了偶數次的Transition，而若是處在-a則代表經歷了奇數次的Transition。現在假設x(t)=a因此計算自相關函數         
+            
+            <div class=sub2_section>
+                <p style="font-size:25px">Calcualtion of 2-level trap Autocorrelation under Poisson Process</p>
+                \begin{equation}
+                \begin{aligned}
+                x(t) x(t+\tau)= & x(t) \times(a \times p(x(t+\tau)=a)-a \times p(x(t+\tau)=-a)) \\
+                = & a \times(a(p(0, \tau)+a(p(2, \tau))+a(p(4, \tau))+\cdots) \\
+                & \quad-a(p(1, \tau)+a(p(3, \tau))+a(p(5, \tau))+\cdots)) \\
+                = & a\left(\frac{(v \tau)^0}{0 !} e^{-v \tau}-\frac{(v \tau)^1}{1 !} e^{-v \tau}+\frac{(v \tau)^2}{2 !} e^{-v \tau}-\frac{(v \tau)^3}{3 !} e^{-v \tau}+\frac{(v \tau)^4}{4 !} e^{-v \tau}\right) \\
+                = & a e^{-2 v \tau}
+                \end{aligned}
+                \end{equation}
+            </div>
+            看到這裡你或許會覺得納悶為何要大費周章的推導出2-level Trap Poisson Process的自相關函數，因為在訊號分析裡有一個有用的定理，Wiener–Khinchin Theorem，告訴我們將自相關函數做傅立葉轉換以後就可
+            以得到功率頻譜！(此處就不做證明了)
+            <figure>
+                <img src="./img/wiki.png" width="750px" class="center">
+                <figcaption> 
+                    A discription of Wiener-Khinchin Theorem from wikipidea
+                </figcaption> 
+            </figure>
+    
+            <div class=sub2_section>
+                <p style="font-size:25px">Applying Wiener-Khinchin Theorem with Autocorrelation function</p>
+                \begin{equation}
+                \begin{aligned}
+                S(\omega) & =4 \int_0^{\infty} \phi(\tau) \cos (\omega \tau) d \tau \\
+                & =4 \operatorname{Re}\left\{\int_0^{\infty} a^2 e^{-2 v \tau} e^{i \omega \tau} d \tau\right\} \\
+                & =4 a^2 \operatorname{Re}\left\{\int_0^{\infty} e^{(-2 v+i \omega) v \tau} d \tau\right\} \\
+                & =\frac{2 a^2 / v}{\left(1+\omega^2 / 4 v^2\right)}
+                \end{aligned}
+                \end{equation}
+            </div>
+            那我們現在就將上面推導出的Poisson Process of 2-level Trap's 畫出log-log plot
+            <figure>
+                <img src="./img/12.png" width="350px" class="center">
+            </figure>
+            我們可以發現在
+            \[\omega \ll 2v\]
+            頻譜是個定值$S(ω)=2a^2/v$，而在另外個極限下
+            \[\omega \gg 2v\]
+            則
+            \[S(\omega) \propto \frac{1}{\omega^2}\]
+            將此頻譜公式對頻率作圖，並以log-log scale Plot，在corner frequency 以後斜率為-2的曲線，稱之Lorenz Curve。此Lorenz curve所表現的頻譜即為單一組2-level Trap 在Poisson Process下的功率頻譜。
+        </div>
+        到目前為止我們僅僅用了很簡單的假設，用一個2-level的系統在Poisson Process下來model通道內的電子與氧化層中的缺陷捕捉與釋放的過程，經過自相關函數以及Wiener–Khinchin Theorem得到功率頻譜，那這樣的結果能用模擬的方式做出來嗎?
+        因此接下來的部分，我用python的方式來模擬這樣的過程，看看這樣的數據在經過傅立葉轉換，使否能真的得到類似的結果?
+            <div class=sub_section>
+                <p style="font-size:30px">Python Simulation for 2-Level Trap Poisson Process</p>
+                那要模擬這樣的過程也十分的容易，我們以2-level system，訊號1與-1交替變化，與越遷機率Transition rate $p$。接著我們給定initial state = 1。接下來用一個for loop來執行每一瞬間訊號的位置，若是random的函數(0~1)回傳值小於$p$
+                則越遷，大於$p$則維持原狀態。若是該瞬間有發生越遷，則1 Flip成-1，反之-1 Flip成1，並記錄下每個瞬間下各個訊號的值。
+                <figure>
+                    <img src="./img/13.png" width="750px" class="center">
+                </figure>
+                將此Function產生的數據作圖我們可以得到類似這樣的訊號：
+                <figure>
+                    <img src="./img/14.png" width="400px" class="center">
+                </figure>
+                那接下來我們就將這組訊號丟進去內建的傅立葉轉換，得到各個頻率對應的係數 (此時為虛數，因含有相位資訊)，並將此回傳的值取絕對值後平方得到功率：
+                <figure>
+                    <img src="./img/15.png" width="750px" class="center">
+                </figure>
+                最後將頻譜以log-log scale作圖，我們便模擬得到Poisson Process下2-level system的功率頻譜
+                <figure>
+                    <img src="./img/16.png" width="750px" class="center">
+                </figure>
+                若是對頻譜斜直線的地方Fitting斜率，會發現結果恰好是-2，與先前理論推導的結果相符，讚嘆科學。
+                <figure>
+                    <img src="./img/17.png" width="350px" class="center">
+                </figure>            
+            </div>
+        這裡我們成功證明了單一Trap(單一載子生命週期)的trap會給出斜率$-2$的頻譜，那在前文中MOSFET裡觀察到的$1/f$ noise又是為何呢? 這是因為，在實際元件當中，MOSFET的Trap並不僅僅只有單一一種
+        ，而是一連續分布的缺陷狀態密度。在氧化層當中有著不同life time的trap同時對MOSFET通道內的載子做捉放，因此接下來我們要將所有有著不同Liefe time的trap都考慮其中，其實就是把他積分起來。
+            <div class=sub_section>
+                <p style="font-size:30px">Poisson Proce For MOSFET's Continuous Trap Model</p>
+                現在我們已經推導出單一缺陷的功率頻譜
+                \[S(\omega) = \frac{a^2 4\tau_z}{1 + \omega^2 \tau_z^2}\]
+                若是要處理多重缺陷，就將所有不同Time Constant的Trap都加總積分起來
+                \[S(\omega) = \int_{\tau_z=0}^{\infty} \frac{p(\tau_z) \tau_z}{1 + \omega^2 \tau_z^2} \, d\tau_z\]
+                因此接下來我們要做的事情就是推導$p(τ_z)$，以帶入上式當中求得整體MOSFET的功率頻譜$S(\omega)$
+                <div class=sub2_section>
+                    <p style="font-size:25px">Derivation of $p(τ_z)$</p>
+                    那我們最簡單的假設是由於與通道相鄰不同深度的氧化層皆有著均勻密度的缺陷，但是對應著不同的Life Time的trap，這些trap透過Quantum Tunneling穿隧到不同深度的氧化層與之捉放。
+                    <figure>
+                        <img src="./img/18.png" width="350px" class="center">
+                    </figure>  
+                    而不同深度距離的氧化層所對應的Life time應有著類似Quantum Tunneling Rate與深度為exponential decay的關係：
+                    \[\tau(\omega) = \frac{1}{r} \propto \frac{1}{e^{-\gamma\omega}}\]
+                    \[\tau(\omega) = \tau_0 e^{\gamma\omega}\]
+                    上述表達了位於深度w和穿透係數γ與LifeTime constant的關係。接著我們現在假設我們的Trap分布於深度$w_1\sim w_2$，對應$τ_1\sim τ_2$的缺陷，因此目前有：
+                    \begin{align}
+                    \tau_1 &= \tau_0 e^{\gamma w_1} \\
+                    \tau_2 &= \tau_0 e^{\gamma w_2}
+                    \end{align}
+                    \begin{align}
+                    \ln\left(\frac{\tau_1}{\tau_2}\right) &= \gamma\Delta w \quad \Rightarrow \quad \gamma = \frac{1}{\Delta w} \ln\left(\frac{\tau_1}{\tau_2}\right) \quad (\text{eq. a})
+                    \end{align}
+                    同時對原本公式兩邊作微分得到：
+                    \[\tau = \tau_0 e^{\gamma w} \Rightarrow \ln\left(\frac{\tau}{\tau_0}\right) = \gamma w \Rightarrow \frac{1}{\tau} d\tau = \gamma dw  (\text{eq.b})\]
+                    現在我們只差把深度對缺陷密度的函數轉換成Trap life time 對缺陷密度的函數：    
+                    \[p(w) \, dw = p(\tau) \, d\tau \Rightarrow p(\tau) = p(w) \, \frac{dw}{d\tau}\]
+                    將eq.b代入
+                    \[p(\tau) = p(w) \cdot \frac{dw}{d\tau} = p(w) \cdot \frac{1}{\tau} \cdot \frac{1}{\gamma}\]
+                    $p(w)=1/Δw$，且再將eq.a代入
+                    \[p(\tau) = \frac{1}{\Delta w} \cdot \frac{1}{\tau} \cdot \frac{\Delta w}{\ln(\frac{\tau_1}{\tau_2})} = \frac{\frac{1}{\tau}}{\ln(\frac{\tau_1}{\tau_2})}\]
+                </div>
+                
+                因此我們終於得到載子週期的密度函數。現在這連續分布的缺陷以單一缺陷的Lorenz curve做積分
+                \begin{equation}
+                \begin{aligned}
+                S(\omega) & =\int_{\tau_z=0}^{\tau_z=\infty} p\left(\tau_z\right) \frac{\tau_z}{\left(1+\omega^2 \tau_z^2\right)} d \tau_z \\
+                & =\frac{1}{\ln \left(\frac{\tau_1}{\tau_2}\right)} \int_{\tau_1}^{\tau_2} \frac{1}{\left(1+\omega^2 \tau_z^2\right)} d \tau_z \\
+                & =\frac{1}{\ln \left(\frac{\tau_1}{\tau_2}\right)} \frac{\left(\tan ^{-1}\left(\omega \tau_2\right)-\tan ^{-1}\left(\omega \tau_1\right)\right)}{\omega} \ldots(\text { eq. } c)
+                \end{aligned}
+                \end{equation}
+                將此公式用python作圖可以得到在其中一個區段內的斜率為-1，即為所謂的$1/f$ noise。
+                <figure>
+                    <img src="./img/19.png" width="350px" class="center">
+                </figure>  
+                我們可以發現由公式Eq.c作圖的頻譜頻譜當中作圖可以觀察到，$ω<ω_2=1/τ_2$ 時為一個定值， $ω>ω_1=1/τ_1$時為一斜率-2的斜直線，而在兩個區間中可以得到斜率-1的頻譜圖，這就是MOSFET實驗當中量測到的$1/f$低頻雜訊。
+            </div>
+            所以說我們成功的由Single Trap 2-Level system在Poisson Process下的自相關函數得到斜率-2的頻譜圖，搭配MOSFET連續均勻分布缺陷在Quantum Tunneling下的載子週期積分得到$1/f$ Noise的結果。因此這系列的分析成功的
+            解釋了在MOSFET元件中遭遇$1/f$ Noise的現象。
+            <figure>
+                <img src="./img/20.png" width="550px" class="center">
+                <figcaption> 
+                    Low-frequency 1/f noise in graphene devices, Alexander A. Balandin, Nature nanotechnology (2013)
+                </figcaption> 
+            </figure> 
+
+        </div>
+    <div class="section">
+        <h1>The Experiment Data</h1>
+        最後我們來看看我在實驗過程中觀察到的結果和數據，接下來的數據來自於某個元件的量測結果。條件是給定一個穩定的Drain Voltage下，施加一個Gate Pulse，我們針對過了一段時間後穩定的Drain Current做傅立葉轉換分析，
+        可以觀察到傅立葉頻譜的斜率確實為-1，是典型的連續分布缺陷導致的雜訊。
+        <figure>
+            <img src="./img/21.png" width="750px" class="center">
+        </figure>
+        當然在不同的條件下，斜率也會有些許改變，可能會介於-1~-2之間，這些就有待更仔細的討論和研究了
+        <figure>
+            <img src="./img/22.png" width="750px" class="center">
+        </figure>
+    </div>
+    <div class="section">
+        <h1>Conclusion</h1>
+        結論，本文探討了看似平凡無奇的雜訊所隱藏的資訊，藉由傅立葉分析我們可以觀察到在某些系統當中特殊的雜訊所隱藏的圍觀機制，並以MOSFET當中的$1/f$ nosie作探討。接下來我們用最simple的2-level Trap model在Poisson Process
+        下的假設推導出自相關函數並透過Wiener–Khinchin Theorem得到其理論的功率頻譜。同時也用了Python模擬這樣的Poisson process，並對這樣的模擬數據進行傅立葉分析得到斜率-2的頻譜圖證實了前面的物理數學理論。最後我們搭配
+        MOSFET真實環境下的連續缺陷分布的假設，透過Quantum Tunneling的公式延伸推導出連率缺陷分布的頻譜圖，得到斜率-1的區間。成功以物理的模型理論解釋了這個”看似奇怪且難以理解”的半導體元件低頻雜訊問題。
+    </div>
+    <div class="section">
+        <h1>Reference</h1>
+        <ul style="font-size: large">
+            <li><a href="https://www.nii.ac.jp/qis/first-quantum/e/forStudents/lecture/pdf/noise/chapter9.pdf" target="_blank">1/f Noise and Random Telegraph
+                Signals </a>
+            <li><a href="https://www.nature.com/articles/nnano.2013.144" target="_blank">Low-frequency 1/f noise in graphene devices</a>
+        </ul>
+    </div>
+    <div class="section">
+        <h1>後記</h1>
+        <span style="font-style:italic; font-size:x-large;" >
+        本文探討的1/f noise是在MOSFET當中常見的現象，雖然這個議題在以前在電機系修課的過程中教授就已經提過，但是幾乎沒有近一步討論成因與細節。
+        剛好近期的研究又碰到了相關的議題，同時也參考了許多paper的解釋，但許多論文講解的都十分不清楚，也讓我十分困惑。因此最後翻箱倒櫃找了很多資源，
+        總算整理出一個完整的脈絡並以物理嚴謹的方式解釋了整個1/f noise的成因，整理成筆記分享給大家。研究的過程中學到了很多新的東西，例如訊號處理等等的理論，
+        最後也用程式模擬出Poisson process得到自洽的結果，覺得十分的滿足:D
+        </span>
+    </div>
+    
+    <img src="../../img/logo.png" width="150px" class="center">
+      <center><h1><a href="../../index.html">Home</a></h1></center>
+</body>
+    
+</html>
